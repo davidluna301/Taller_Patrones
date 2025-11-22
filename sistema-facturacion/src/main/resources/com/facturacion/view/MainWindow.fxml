@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.facturacion.view.FXMLController" spacing="10" style="-fx-background-color: #f0f0f0;">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    
+    <!-- Título principal -->
+    <Label text="Sistema de Facturación" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #2c3e50;">
+        <VBox.margin>
+            <Insets bottom="20"/>
+        </VBox.margin>
+    </Label>
+    
+    <!-- Sección de información del cliente -->
+    <TitledPane text="Información del Cliente" collapsible="false" style="-fx-background-color: white; -fx-border-color: #bdc3c7;">
+        <content>
+            <GridPane hgap="10" vgap="10" style="-fx-padding: 10;">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="150" prefWidth="150"/>
+                    <ColumnConstraints minWidth="200" prefWidth="300" hgrow="ALWAYS"/>
+                </columnConstraints>
+                
+                <Label text="Nombre del Cliente:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="customerNameField" GridPane.rowIndex="0" GridPane.columnIndex="1" promptText="Ingrese el nombre del cliente"/>
+                
+                <Label text="Contacto del Cliente:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="customerContactField" GridPane.rowIndex="1" GridPane.columnIndex="1" promptText="Ingrese teléfono o email"/>
+            </GridPane>
+        </content>
+    </TitledPane>
+    
+    <!-- Sección de información del producto -->
+    <TitledPane text="Información del Producto/Servicio" collapsible="false" style="-fx-background-color: white; -fx-border-color: #bdc3c7;">
+        <content>
+            <GridPane hgap="10" vgap="10" style="-fx-padding: 10;">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="150" prefWidth="150"/>
+                    <ColumnConstraints minWidth="200" prefWidth="300" hgrow="ALWAYS"/>
+                </columnConstraints>
+                
+                <Label text="Tipo de Factura:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="invoiceTypeCombo" GridPane.rowIndex="0" GridPane.columnIndex="1" promptText="Seleccione tipo"/>
+                
+                <Label text="Producto/Servicio:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="productNameField" GridPane.rowIndex="1" GridPane.columnIndex="1" promptText="Nombre del producto o servicio"/>
+                
+                <Label text="Precio Unitario:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="productPriceField" GridPane.rowIndex="2" GridPane.columnIndex="1" promptText="Precio en $"/>
+                
+                <Label text="Cantidad/Horas:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <TextField fx:id="quantityField" GridPane.rowIndex="3" GridPane.columnIndex="1" promptText="Cantidad para productos, horas para servicios"/>
+            </GridPane>
+        </content>
+    </TitledPane>
+    
+    <!-- Botones de acción -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="Crear Factura" onAction="#handleCreateInvoice" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold;"/>
+        <Button text="Mostrar Todas" onAction="#handleShowAllInvoices" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold;"/>
+        <Button text="Limpiar Pantalla" onAction="#handleClearScreen" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;"/>
+        
+        <HBox.margin>
+            <Insets top="10" bottom="10"/>
+        </HBox.margin>
+    </HBox>
+    
+    <!-- Área de visualización de facturas -->
+    <TitledPane text="Facturas Generadas" collapsible="false" style="-fx-background-color: white; -fx-border-color: #bdc3c7;">
+        <content>
+            <TextArea fx:id="invoiceDisplayArea" prefRowCount="10" prefColumnCount="50" 
+                     editable="false" wrapText="true" style="-fx-font-family: 'Courier New';"/>
+        </content>
+    </TitledPane>
+    
+    <!-- Barra de estado -->
+    <Label fx:id="statusLabel" text="Estado: Sistema inicializado correctamente" 
+           style="-fx-font-style: italic; -fx-text-fill: #7f8c8d;">
+        <VBox.margin>
+            <Insets top="10"/>
+        </VBox.margin>
+    </Label>
+    
+</VBox>
